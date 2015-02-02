@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Eukaryotic signal peptides and prediction of their cleavage sites</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Eukaryotic signal peptides and prediction of their cleavage sites">
+  <meta name="author" content="Michal Burdukiewicz, Piotr Sobczyk">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Eukaryotic signal peptides and prediction of their cleavage sites</h1>
+    <h2></h2>
+    <p>Michal Burdukiewicz, Piotr Sobczyk<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Signal peptides</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Signal peptides - short, N-terminal sequences directing protein to final destination.</p>
+
+<p>Goals:</p>
+
+<ul>
+<li>predict &#39;accurately&#39; presence of signal peptide,</li>
+<li>predict &#39;accurately&#39; cleavage site.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Signal peptide prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-2-1.png" alt="plot of chunk unnamed-chunk-2"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Signal peptide prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
+
+<!-- Mon Feb 02 03:57:02 2015 -->
+
+<table border=1>
+<caption align="bottom"> Probability of detecting signal peptide depends on the cleavage site position. </caption>
+<tr> <th>  </th> <th> Probability of signal peptide </th>  </tr>
+  <tr> <td align="right"> (6,15] </td> <td align="right"> 0.80 </td> </tr>
+  <tr> <td align="right"> (15,24] </td> <td align="right"> 0.84 </td> </tr>
+  <tr> <td align="right"> (24,35] </td> <td align="right"> 0.68 </td> </tr>
+  <tr> <td align="right"> (35,89] </td> <td align="right"> 0.24 </td> </tr>
+   </table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Cleavage site prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-4-1.png" alt="plot of chunk unnamed-chunk-4"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Cleavage site prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Mean cleavage site error: 2.5469 </p>
+
+<p>Median cleavage site error: 2 </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Cleavage site prediction - only &#39;normal&#39; signal peptides</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-6-1.png" alt="plot of chunk unnamed-chunk-6"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Cleavage site position</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-7-1.png" alt="plot of chunk unnamed-chunk-7"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
+
+<!-- Mon Feb 02 03:57:03 2015 -->
+
+<table border=1>
+<caption align="bottom"> Number of proteins with given cleavage site position. </caption>
+<tr> <th>  </th> <th> Position </th> <th> N </th> <th> prop </th>  </tr>
+  <tr> <td align="right"> 1 </td> <td> (6,14] </td> <td align="right">  21 </td> <td align="right"> 0.01 </td> </tr>
+  <tr> <td align="right"> 2 </td> <td> (14,36] </td> <td align="right"> 3812 </td> <td align="right"> 0.98 </td> </tr>
+  <tr> <td align="right"> 3 </td> <td> (36,89] </td> <td align="right">  64 </td> <td align="right"> 0.02 </td> </tr>
+   </table>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Standarized frequency</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>\[
+\huge{f_s =  \frac{\sum_{i = 1}^{N} 1 - f_{i}}{N}}
+\]</p>
+
+<p>\(\huge{N}\) - number of proteins<br>
+\(\huge{f_i}\) - frequency of a given amino acid in the mature protein</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Position P-4</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-9-1.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Position P-3</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-9-2.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Position P-2</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-9-3.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Position P-1</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-9-4.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Position P1</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-9-5.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Position P2</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-9-6.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Position P3</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-9-7.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Position P4</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="assets/fig/unnamed-chunk-9-8.png" alt="plot of chunk unnamed-chunk-9"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Cleavage site position</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/fig/unnamed-chunk-10-1.png" alt="plot of chunk unnamed-chunk-10"> </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
+
+<!-- Mon Feb 02 03:57:23 2015 -->
+
+<table border=1>
+<caption align="bottom"> Number of proteins with given cleavage site position. </caption>
+<tr> <th>  </th> <th> Position </th> <th> N </th> <th> prop </th>  </tr>
+  <tr> <td align="right"> 1 </td> <td> (6,14] </td> <td align="right">  21 </td> <td align="right"> 0.01 </td> </tr>
+  <tr> <td align="right"> 2 </td> <td> (14,36] </td> <td align="right"> 3812 </td> <td align="right"> 0.98 </td> </tr>
+  <tr> <td align="right"> 3 </td> <td> (36,89] </td> <td align="right">  64 </td> <td align="right"> 0.02 </td> </tr>
+   </table>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Short signal peptides</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
+
+<!-- Mon Feb 02 03:57:23 2015 -->
+
+<table border=1>
+<caption align="bottom"> Proteins with short signal peptides. </caption>
+<tr> <th>  </th> <th> Position </th> <th> N </th>  </tr>
+  <tr> <td align="right"> 1 </td> <td> 7 </td> <td align="right">   1 </td> </tr>
+  <tr> <td align="right"> 2 </td> <td> 11 </td> <td align="right">   4 </td> </tr>
+  <tr> <td align="right"> 3 </td> <td> 12 </td> <td align="right">   2 </td> </tr>
+  <tr> <td align="right"> 4 </td> <td> 13 </td> <td align="right">   3 </td> </tr>
+  <tr> <td align="right"> 5 </td> <td> 14 </td> <td align="right">  11 </td> </tr>
+   </table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Signal peptide data</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Query used to gather sequences of proteins with signal peptides:</p>
+
+<pre><code>select:(keyword:signal) 
+AND taxonomy:&quot;Eukaryota [2759]&quot; 
+AND created:[1950 TO 2010] 
+AND reviewed:yes 
+AND annotation:(type:signal confidence:experimental)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Short signal peptides</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
+
+<!-- Mon Feb 02 03:57:23 2015 -->
+
+<table border=1>
+<caption align="bottom"> Verification of short signal peptides. </caption>
+<tr> <th>  </th> <th> Experiment </th> <th> N </th>  </tr>
+  <tr> <td align="right"> 1 </td> <td> No </td> <td align="right">  14 </td> </tr>
+  <tr> <td align="right"> 2 </td> <td> Yes </td> <td align="right">   3 </td> </tr>
+  <tr> <td align="right"> 3 </td> <td> Not assessed </td> <td align="right">   4 </td> </tr>
+   </table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
+  <hgroup>
+    <h2>Short signal peptides</h2>
+  </hgroup>
+  <article data-timings="">
+    <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
+
+<!-- Mon Feb 02 03:57:23 2015 -->
+
+<table border=1>
+<caption align="bottom"> Verified signal peptides. </caption>
+<tr> <th>  </th> <th> position </th> <th> exp </th>  </tr>
+  <tr> <td align="right"> GLU2B_HUMAN </td> <td align="right"> 14 </td> <td> Yes </td> </tr>
+  <tr> <td align="right"> GLU2B_MOUSE </td> <td align="right"> 14 </td> <td> Yes </td> </tr>
+  <tr> <td align="right"> ICIW_WHEAT </td> <td align="right"> 12 </td> <td> Not assessed </td> </tr>
+  <tr> <td align="right"> LIP2_CANRU </td> <td align="right"> 14 </td> <td> Not assessed </td> </tr>
+  <tr> <td align="right"> PLSC_PHYPO </td> <td align="right"> 14 </td> <td> Not assessed </td> </tr>
+  <tr> <td align="right"> SCX9_MESMA </td> <td align="right"> 14 </td> <td> Not assessed </td> </tr>
+  <tr> <td align="right"> VSI2_TRYBB </td> <td align="right"> 12 </td> <td> Yes </td> </tr>
+   </table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-22" style="background:;">
+  <hgroup>
+    <h2>Conclusions and perspectives</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Verify long signal peptides.<br></li>
+<li>Investigate diffrences between shorter normal peptides and longer normal peptides.<br></li>
+<li>Separate between HSMM for shorter and longer signal peptides.<br></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Signal peptides'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Signal peptide prediction'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Signal peptide prediction'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Cleavage site prediction'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Cleavage site prediction'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Cleavage site prediction - only &#39;normal&#39; signal peptides'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Cleavage site position'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Standarized frequency'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Position P-4'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Position P-3'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Position P-2'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Position P-1'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Position P1'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Position P2'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Position P3'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Position P4'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Cleavage site position'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Short signal peptides'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Signal peptide data'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Short signal peptides'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Short signal peptides'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Conclusions and perspectives'>
+         22
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

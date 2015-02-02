@@ -1,0 +1,249 @@
+---
+title       : Eukaryotic signal peptides and prediction of their cleavage sites
+subtitle    : 
+author      : Michal Burdukiewicz, Piotr Sobczyk
+job         : 
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax]     # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Signal peptides
+
+```{r echo=FALSE,results='asis',message=FALSE}
+library(ggplot2)
+library(xtable)
+library(seqinr)
+```
+
+
+Signal peptides - short, N-terminal sequences directing protein to final destination.
+
+Goals:
+* predict 'accurately' presence of signal peptide,
+* predict 'accurately' cleavage site.
+
+
+---
+
+## Signal peptide prediction
+
+```{r echo=FALSE,results='asis',fig.width=13}
+load("tcsdf.RData")
+theme_set(theme_grey(base_size = 18)) 
+ggplot(tcsdf, aes(x = sp_probability, fill = len_gr)) + 
+  geom_density(alpha = 0.25) + 
+  scale_y_continuous(name = "Density") +
+  scale_x_continuous("Signal peptide probability") +
+  scale_fill_discrete("Cleavage\nsite\nposition")
+```
+
+
+---
+
+## Signal peptide prediction
+
+```{r echo=FALSE,results='asis',fig.width=13}
+load("tcsdf.RData")
+dat <- data.frame(sp = sapply(levels(tcsdf[["len_gr"]]), function(i)
+  mean(tcsdf[tcsdf[["len_gr"]] == i, "sp_probability"])))
+colnames(dat) <- "Probability of signal peptide"
+print(xtable(dat, "Probability of detecting signal peptide depends on the cleavage site position."), type = "html")
+```
+
+
+---
+
+## Cleavage site prediction
+
+```{r echo=FALSE,results='asis',fig.width=13}
+load("tcsdf.RData")
+theme_set(theme_grey(base_size = 18)) 
+ggplot(tcsdf, aes(x = abs(sp_end - real) - 1)) + 
+  geom_density(alpha = 0.25) + 
+  scale_y_continuous(name = "Density") +
+  scale_x_continuous("Cleavage site error")
+```
+
+---
+
+## Cleavage site prediction
+
+```{r echo=FALSE,results='asis',fig.width=13}
+load("tcsdf.RData")
+cat("Mean cleavage site error:", round(mean(abs(tcsdf[["real"]] - tcsdf[["sp_end"]])), 4), "\n\n")
+cat("Median cleavage site error:", round(median(abs(tcsdf[["real"]] - tcsdf[["sp_end"]])), 4), "\n\n")
+
+```
+
+
+---
+
+## Cleavage site prediction - only 'normal' signal peptides
+
+```{r echo=FALSE,results='asis',fig.width=13}
+load("tcsdf.RData")
+theme_set(theme_grey(base_size = 18)) 
+ggplot(tcsdf[tcsdf[["len_gr"]] %in% c("(15,24]", "(24,35]"), ], aes(x = abs(sp_end - real) - 1)) + 
+  geom_density(alpha = 0.25) + 
+  scale_y_continuous(name = "Density") +
+  scale_x_continuous("Cleavage site error")
+```
+
+--- &twocol
+
+## Cleavage site position
+
+*** =left
+
+```{r echo=FALSE,results='asis'}
+load("csdf.RData")
+theme_set(theme_grey(base_size = 18)) 
+ggplot(csdf, aes(x = position)) + geom_density() +
+  scale_x_continuous("Cleavage site position") +
+  geom_vline(xintercept = 14, colour = "red") +
+  geom_vline(xintercept = 36, colour = "red")
+```
+
+*** =right
+
+```{r echo=FALSE,results='asis'}
+load("csdf.RData")
+dat <- data.frame(table(cut(csdf[["position"]], c(6, 14, 36, 89))))
+colnames(dat) <- c("Position", "N")
+print(xtable(cbind(dat, prop = dat[["N"]]/sum(dat[["N"]])),
+             "Number of proteins with given cleavage site position."), type = "html")
+```
+
+
+--- 
+
+## Standarized frequency
+
+$$latex
+\huge{f_s =  \frac{\sum_{i = 1}^{N} 1 - f_{i}}{N}}
+$$
+
+$\huge{N}$ - number of proteins  
+$\huge{f_i}$ - frequency of a given amino acid in the mature protein
+
+```{r echo=FALSE,results='asis',fig.width=13}
+load("csdf.RData")
+for(i in paste0("P", c(paste0(".", 4:1), 1L:4))) {
+  cat("--- \n\n")
+  cat("\n\n## Position", sub(".", "-", i, fixed = TRUE), "  \n\n")
+  tmp_csdf <- csdf[, c(i, "positionf", a()[-1])]
+  tmp_csdf <- do.call(rbind, lapply(1L:nrow(tmp_csdf), function(single_row)
+    data.frame(aa = tmp_csdf[single_row, 1L], 
+               gr = tmp_csdf[single_row, 2L], 
+               prop = 1 - tmp_csdf[single_row, toupper(as.character(tmp_csdf[single_row, 1]))])))
+  
+  agg_csdf <- aggregate(prop ~ aa + gr, tmp_csdf, sum)
+
+  
+  agg_csdf[["prop"]] <- agg_csdf[["prop"]]/unlist(sapply(1L:4, function(one_group)
+    rep(as.vector(table(tmp_csdf[[2]]))[one_group], 
+        as.vector(table(agg_csdf[["gr"]]))[one_group])))
+  theme_set(theme_grey(base_size = 18)) 
+  print(ggplot(agg_csdf[agg_csdf[[2]] != "(6,15]", ], aes(x = aa, y = prop, fill = gr)) + 
+          geom_bar(stat = "identity", position = "dodge", name = "Frequency") + 
+          scale_y_continuous(name = "Frequency") +
+          scale_x_discrete("Amino acid") +
+          scale_fill_discrete("Cleavage\nsite\nposition") +
+          ggtitle(sub(".", "-", i, fixed = TRUE)))
+  cat("\n\n")
+  }
+```
+
+
+--- &twocol
+
+## Cleavage site position
+
+*** =left
+
+```{r echo=FALSE,results='asis'}
+load("csdf.RData")
+theme_set(theme_grey(base_size = 18)) 
+ggplot(csdf, aes(x = position)) + geom_density() +
+  scale_x_continuous("Cleavage site position") +
+  geom_vline(xintercept = 14, colour = "red") +
+  geom_vline(xintercept = 36, colour = "red")
+```
+
+*** =right
+
+```{r echo=FALSE,results='asis'}
+load("csdf.RData")
+dat <- data.frame(table(cut(csdf[["position"]], c(6, 14, 36, 89))))
+colnames(dat) <- c("Position", "N")
+print(xtable(cbind(dat, prop = dat[["N"]]/sum(dat[["N"]])),
+             "Number of proteins with given cleavage site position."), type = "html")
+```
+
+
+
+--- 
+
+## Short signal peptides
+
+```{r echo=FALSE,results='asis'}
+load("csdf.RData")
+dat <- data.frame(table(csdf[csdf[["position"]] < 15, "position"]))
+colnames(dat) <- c("Position", "N")
+print(xtable(dat, "Proteins with short signal peptides."), type = "html")
+```
+
+
+---
+
+## Signal peptide data
+
+Query used to gather sequences of proteins with signal peptides:
+
+```
+select:(keyword:signal) 
+AND taxonomy:"Eukaryota [2759]" 
+AND created:[1950 TO 2010] 
+AND reviewed:yes 
+AND annotation:(type:signal confidence:experimental)
+```
+
+
+--- 
+
+## Short signal peptides
+
+```{r echo=FALSE,results='asis'}
+shorts <- read.table("shorts.txt", sep = ";", header = TRUE)
+dat <- data.frame(Experiment = c("No", "Yes", "Not assessed"),
+             N = data.frame(table(shorts[["exp"]], useNA = "always"))[["Freq"]])
+print(xtable(dat, "Verification of short signal peptides."), type = "html")
+```
+
+
+--- 
+
+## Short signal peptides
+
+```{r echo=FALSE,results='asis'}
+load("csdf.RData")
+dat <- data.frame(csdf[csdf[["position"]] < 15, c("prot", "position")])
+dat <- cbind(dat, exp = shorts[order(shorts[["name"]]), "exp"])
+dat[["exp"]][is.na(dat[["exp"]])] <- -1
+dat[["exp"]] <- as.factor(dat[["exp"]])
+levels(dat[["exp"]]) <- c("Not assessed", "No", "Yes")
+print(xtable(dat[dat[["exp"]] != "No", c(2, 3)], "Verified signal peptides.",
+             digits = 0), type = "html")
+```
+
+--- 
+
+## Conclusions and perspectives
+
+1. Verify long signal peptides.  
+2. Investigate diffrences between shorter normal peptides and longer normal peptides.  
+3. Separate between HSMM for shorter and longer signal peptides.  
