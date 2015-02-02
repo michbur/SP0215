@@ -30,139 +30,71 @@ Goals:
 ![plot of chunk unnamed-chunk-2](assets/fig/unnamed-chunk-2-1.png) 
 
 
----
-
-## Signal peptide prediction
-
-<!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
-<!-- Mon Feb 02 03:57:02 2015 -->
-<table border=1>
-<caption align="bottom"> Probability of detecting signal peptide depends on the cleavage site position. </caption>
-<tr> <th>  </th> <th> Probability of signal peptide </th>  </tr>
-  <tr> <td align="right"> (6,15] </td> <td align="right"> 0.80 </td> </tr>
-  <tr> <td align="right"> (15,24] </td> <td align="right"> 0.84 </td> </tr>
-  <tr> <td align="right"> (24,35] </td> <td align="right"> 0.68 </td> </tr>
-  <tr> <td align="right"> (35,89] </td> <td align="right"> 0.24 </td> </tr>
-   </table>
-
-
----
-
-## Cleavage site prediction
-
-![plot of chunk unnamed-chunk-4](assets/fig/unnamed-chunk-4-1.png) 
-
----
-
-## Cleavage site prediction
-
-Mean cleavage site error: 2.5469 
-
-Median cleavage site error: 2 
-
-
----
-
-## Cleavage site prediction - only 'normal' signal peptides
-
-![plot of chunk unnamed-chunk-6](assets/fig/unnamed-chunk-6-1.png) 
-
 --- &twocol
 
 ## Cleavage site position
 
 *** =left
 
-![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-3](assets/fig/unnamed-chunk-3-1.png) 
 
 *** =right
 
 <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
-<!-- Mon Feb 02 03:57:03 2015 -->
+<!-- Mon Feb 02 08:19:50 2015 -->
 <table border=1>
 <caption align="bottom"> Number of proteins with given cleavage site position. </caption>
 <tr> <th>  </th> <th> Position </th> <th> N </th> <th> prop </th>  </tr>
-  <tr> <td align="right"> 1 </td> <td> (6,14] </td> <td align="right">  21 </td> <td align="right"> 0.01 </td> </tr>
-  <tr> <td align="right"> 2 </td> <td> (14,36] </td> <td align="right"> 3812 </td> <td align="right"> 0.98 </td> </tr>
-  <tr> <td align="right"> 3 </td> <td> (36,89] </td> <td align="right">  64 </td> <td align="right"> 0.02 </td> </tr>
+  <tr> <td align="right"> 1 </td> <td> (6,15] </td> <td align="right"> 112 </td> <td align="right"> 0.03 </td> </tr>
+  <tr> <td align="right"> 2 </td> <td> (15,24] </td> <td align="right"> 2813 </td> <td align="right"> 0.72 </td> </tr>
+  <tr> <td align="right"> 3 </td> <td> (24,35] </td> <td align="right"> 896 </td> <td align="right"> 0.23 </td> </tr>
+  <tr> <td align="right"> 4 </td> <td> (35,89] </td> <td align="right">  76 </td> <td align="right"> 0.02 </td> </tr>
    </table>
 
 
---- 
+---
 
-## Standarized frequency
+## Signal peptide prediction
 
-$$latex
-\huge{f_s =  \frac{\sum_{i = 1}^{N} 1 - f_{i}}{N}}
-$$
-
-$\huge{N}$ - number of proteins  
-$\huge{f_i}$ - frequency of a given amino acid in the mature protein
-
---- 
+![plot of chunk unnamed-chunk-5](assets/fig/unnamed-chunk-5-1.png) 
 
 
+---
 
-## Position P-4   
+## Signal peptide prediction
+
+<!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
+<!-- Mon Feb 02 08:17:47 2015 -->
+<table border=1>
+<caption align="bottom"> Average probability of detecting signal peptide depends on the cleavage site position. </caption>
+<tr> <th>  </th> <th> Mean </th> <th> Median </th>  </tr>
+  <tr> <td align="right"> (6,15] </td> <td align="right"> 0.80 </td> <td align="right"> 0.92 </td> </tr>
+  <tr> <td align="right"> (15,24] </td> <td align="right"> 0.84 </td> <td align="right"> 0.95 </td> </tr>
+  <tr> <td align="right"> (24,35] </td> <td align="right"> 0.68 </td> <td align="right"> 0.83 </td> </tr>
+  <tr> <td align="right"> (35,89] </td> <td align="right"> 0.24 </td> <td align="right"> 0.03 </td> </tr>
+   </table>
+
+
+---
+
+## Cleavage site prediction
+
+![plot of chunk unnamed-chunk-7](assets/fig/unnamed-chunk-7-1.png) 
+
+---
+
+## Cleavage site prediction
+
+Mean cleavage site error: 2.2731 .
+
+Median cleavage site error: 2 .
+
+
+---
+
+## Cleavage site prediction - only 'normal' signal peptides
 
 ![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-1.png) 
-
---- 
-
-
-
-## Position P-3   
-
-![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-2.png) 
-
---- 
-
-
-
-## Position P-2   
-
-![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-3.png) 
-
---- 
-
-
-
-## Position P-1   
-
-![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-4.png) 
-
---- 
-
-
-
-## Position P1   
-
-![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-5.png) 
-
---- 
-
-
-
-## Position P2   
-
-![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-6.png) 
-
---- 
-
-
-
-## Position P3   
-
-![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-7.png) 
-
---- 
-
-
-
-## Position P4   
-
-![plot of chunk unnamed-chunk-9](assets/fig/unnamed-chunk-9-8.png) 
-
 
 --- &twocol
 
@@ -185,13 +117,110 @@ $\huge{f_i}$ - frequency of a given amino acid in the mature protein
    </table>
 
 
+--- 
+
+## Standarized frequency
+
+$$latex
+\huge{f_s =  \frac{\sum_{i = 1}^{N} 1 - f_{i}}{N}}
+$$
+
+$\huge{N}$ - number of proteins.  
+$\huge{f_i}$ - frequency of a given amino acid in the mature protein.
+
+--- 
+
+
+
+## Position P-4   
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12-1.png) 
+
+--- 
+
+
+
+## Position P-3   
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12-2.png) 
+
+--- 
+
+
+
+## Position P-2   
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12-3.png) 
+
+--- 
+
+
+
+## Position P-1   
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12-4.png) 
+
+--- 
+
+
+
+## Position P1   
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12-5.png) 
+
+--- 
+
+
+
+## Position P2   
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12-6.png) 
+
+--- 
+
+
+
+## Position P3   
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12-7.png) 
+
+--- 
+
+
+
+## Position P4   
+
+![plot of chunk unnamed-chunk-12](assets/fig/unnamed-chunk-12-8.png) 
+
+
+--- &twocol
+
+## Cleavage site position
+
+*** =left
+
+![plot of chunk unnamed-chunk-13](assets/fig/unnamed-chunk-13-1.png) 
+
+*** =right
+
+<!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
+<!-- Mon Feb 02 08:18:07 2015 -->
+<table border=1>
+<caption align="bottom"> Number of proteins with given cleavage site position. </caption>
+<tr> <th>  </th> <th> Position </th> <th> N </th> <th> prop </th>  </tr>
+  <tr> <td align="right"> 1 </td> <td> (6,14] </td> <td align="right">  21 </td> <td align="right"> 0.01 </td> </tr>
+  <tr> <td align="right"> 2 </td> <td> (14,36] </td> <td align="right"> 3812 </td> <td align="right"> 0.98 </td> </tr>
+  <tr> <td align="right"> 3 </td> <td> (36,89] </td> <td align="right">  64 </td> <td align="right"> 0.02 </td> </tr>
+   </table>
+
+
 
 --- 
 
 ## Short signal peptides
 
 <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
-<!-- Mon Feb 02 03:57:23 2015 -->
+<!-- Mon Feb 02 08:18:07 2015 -->
 <table border=1>
 <caption align="bottom"> Proteins with short signal peptides. </caption>
 <tr> <th>  </th> <th> Position </th> <th> N </th>  </tr>
@@ -223,7 +252,7 @@ AND annotation:(type:signal confidence:experimental)
 ## Short signal peptides
 
 <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
-<!-- Mon Feb 02 03:57:23 2015 -->
+<!-- Mon Feb 02 08:18:07 2015 -->
 <table border=1>
 <caption align="bottom"> Verification of short signal peptides. </caption>
 <tr> <th>  </th> <th> Experiment </th> <th> N </th>  </tr>
@@ -238,7 +267,7 @@ AND annotation:(type:signal confidence:experimental)
 ## Short signal peptides
 
 <!-- html table generated in R 3.1.2 by xtable 1.7-4 package -->
-<!-- Mon Feb 02 03:57:23 2015 -->
+<!-- Mon Feb 02 08:18:07 2015 -->
 <table border=1>
 <caption align="bottom"> Verified signal peptides. </caption>
 <tr> <th>  </th> <th> position </th> <th> exp </th>  </tr>

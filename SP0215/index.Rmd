@@ -34,6 +34,46 @@ Goals:
 ```{r echo=FALSE,results='asis',fig.width=13}
 load("tcsdf.RData")
 theme_set(theme_grey(base_size = 18)) 
+ggplot(tcsdf, aes(x = sp_probability)) + 
+  geom_density(alpha = 0.35) + 
+  scale_y_continuous(name = "Density") +
+  scale_x_continuous("Signal peptide probability")
+```
+
+
+--- &twocol
+
+## Cleavage site position
+
+*** =left
+
+```{r echo=FALSE,results='asis'}
+load("csdf.RData")
+theme_set(theme_grey(base_size = 18)) 
+ggplot(csdf, aes(x = position)) + geom_density() +
+  scale_x_continuous("Cleavage site position") +
+  geom_vline(xintercept = 14, colour = "red") +
+  geom_vline(xintercept = 36, colour = "red")
+```
+
+*** =right
+
+```{r echo=FALSE,results='asis'}
+load("csdf.RData")
+dat <- data.frame(table(cut(csdf[["position"]], c(6, 15, 24, 35, 89))))
+colnames(dat) <- c("Position", "N")
+print(xtable(cbind(dat, prop = dat[["N"]]/sum(dat[["N"]])),
+             "Number of proteins with given cleavage site position."), type = "html")
+```
+
+
+---
+
+## Signal peptide prediction
+
+```{r echo=FALSE,results='asis',fig.width=13}
+load("tcsdf.RData")
+theme_set(theme_grey(base_size = 18)) 
 ggplot(tcsdf, aes(x = sp_probability, fill = len_gr)) + 
   geom_density(alpha = 0.25) + 
   scale_y_continuous(name = "Density") +
@@ -48,10 +88,11 @@ ggplot(tcsdf, aes(x = sp_probability, fill = len_gr)) +
 
 ```{r echo=FALSE,results='asis',fig.width=13}
 load("tcsdf.RData")
-dat <- data.frame(sp = sapply(levels(tcsdf[["len_gr"]]), function(i)
-  mean(tcsdf[tcsdf[["len_gr"]] == i, "sp_probability"])))
-colnames(dat) <- "Probability of signal peptide"
-print(xtable(dat, "Probability of detecting signal peptide depends on the cleavage site position."), type = "html")
+dat <- data.frame(t(sapply(levels(tcsdf[["len_gr"]]), function(i)
+  c(mean(tcsdf[tcsdf[["len_gr"]] == i, "sp_probability"]),
+    median(tcsdf[tcsdf[["len_gr"]] == i, "sp_probability"])))))
+colnames(dat) <- c("Mean", "Median")
+print(xtable(dat, "Average probability of detecting signal peptide depends on the cleavage site position."), type = "html")
 ```
 
 
@@ -62,7 +103,7 @@ print(xtable(dat, "Probability of detecting signal peptide depends on the cleava
 ```{r echo=FALSE,results='asis',fig.width=13}
 load("tcsdf.RData")
 theme_set(theme_grey(base_size = 18)) 
-ggplot(tcsdf, aes(x = abs(sp_end - real) - 1)) + 
+ggplot(tcsdf, aes(x = abs(sp_end - real - 1))) + 
   geom_density(alpha = 0.25) + 
   scale_y_continuous(name = "Density") +
   scale_x_continuous("Cleavage site error")
@@ -74,9 +115,8 @@ ggplot(tcsdf, aes(x = abs(sp_end - real) - 1)) +
 
 ```{r echo=FALSE,results='asis',fig.width=13}
 load("tcsdf.RData")
-cat("Mean cleavage site error:", round(mean(abs(tcsdf[["real"]] - tcsdf[["sp_end"]])), 4), "\n\n")
-cat("Median cleavage site error:", round(median(abs(tcsdf[["real"]] - tcsdf[["sp_end"]])), 4), "\n\n")
-
+cat("Mean cleavage site error:", round(mean(abs(tcsdf[["real"]] - tcsdf[["sp_end"]] - 1)), 4), ".\n\n")
+cat("Median cleavage site error:", round(median(abs(tcsdf[["real"]] - tcsdf[["sp_end"]]- 1)), 4), ".\n\n")
 ```
 
 
@@ -87,7 +127,7 @@ cat("Median cleavage site error:", round(median(abs(tcsdf[["real"]] - tcsdf[["sp
 ```{r echo=FALSE,results='asis',fig.width=13}
 load("tcsdf.RData")
 theme_set(theme_grey(base_size = 18)) 
-ggplot(tcsdf[tcsdf[["len_gr"]] %in% c("(15,24]", "(24,35]"), ], aes(x = abs(sp_end - real) - 1)) + 
+ggplot(tcsdf[tcsdf[["len_gr"]] %in% c("(15,24]", "(24,35]"), ], aes(x = abs(sp_end - real- 1))) + 
   geom_density(alpha = 0.25) + 
   scale_y_continuous(name = "Density") +
   scale_x_continuous("Cleavage site error")
@@ -127,8 +167,8 @@ $$latex
 \huge{f_s =  \frac{\sum_{i = 1}^{N} 1 - f_{i}}{N}}
 $$
 
-$\huge{N}$ - number of proteins  
-$\huge{f_i}$ - frequency of a given amino acid in the mature protein
+$\huge{N}$ - number of proteins.  
+$\huge{f_i}$ - frequency of a given amino acid in the mature protein.
 
 ```{r echo=FALSE,results='asis',fig.width=13}
 load("csdf.RData")
